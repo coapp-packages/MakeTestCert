@@ -10,7 +10,7 @@ any machine)
 And a .PFX file (the private key and certificate in a PKCS#12 file
 
 Usage:
-%~f0 "subject name"
+maketestcert subject name
 
 The utility will ask for a password when creating a .PFX file.
 
