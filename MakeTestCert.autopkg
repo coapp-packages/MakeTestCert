@@ -1,0 +1,49 @@
+@import "version.inc";
+@import "outercurve.inc";
+
+package {
+    name: "MakeTestCert";
+    version: "${package-version}";
+    arch: any;
+    display-name: "Make Test Cert Script";
+}
+
+metadata {
+    summary: "A script to simplify the creation of a test signing certificate";
+    description: @"This package contains a script for creating a test code signing certificate."; 
+    /* icon: @"images\logo3.png"; */
+    
+    author-version : "1.0";
+    bug-tracker: "https://github.com/organizations/coapp/dashboard/issues";
+    stability : "0";
+}
+
+compatability-policy {
+    minimum: "1.0.0.0";
+    maximum: "${OneLessThanCurrent}"; // this is the default
+    versions : {
+        "1.0",
+    }; // if not specified, find the versions by looking at the feeds and finding all the major/minor versions in range.
+}
+
+files[cmds] {
+    root: ".\\";
+    
+    include: {
+        "MakeTestCert.cmd",
+    };
+    
+    trim-path: all;
+};
+
+application {
+    include : {
+        cmds
+    };
+}
+
+package-composition {
+    symlinks : { 
+        cmds=> @"${bin}\${each.Name}" = @"${packagedir}\${each.Name}";
+    };
+}
