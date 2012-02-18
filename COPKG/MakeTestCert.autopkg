@@ -27,7 +27,7 @@ compatability-policy {
 }
 
 files[cmds] {
-    root: ".\\";
+    root: "..\\";
     
     include: {
         "MakeTestCert.cmd",
