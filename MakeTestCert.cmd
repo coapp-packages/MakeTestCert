@@ -7,7 +7,7 @@ SET SUBJECTNAME=%*
 
 
 makecert -pe -ss MY -sr LocalMachine -$ individual -n "CN=%SUBJECTNAME%" -len 2048 -r "%SUBJECTNAME%.cer"
-CertMgr /add "%SUBJECTNAME%.cer" /s /r localMachine root
+CertMgr.exe /add "%SUBJECTNAME%.cer" /s /r localMachine root
 certutil.exe -privatekey -exportpfx "%SUBJECTNAME%" "%SUBJECTNAME%.pfx"
 
 echo.
@@ -24,7 +24,7 @@ echo.
 echo To install the certificate on a test machine, you can copy the 
 echo "%SUBJECTNAME%.CER" file to the test computer and run:
 echo.
-echo     CertMgr /add "%SUBJECTNAME%.cer" /s /r localMachine root
+echo     CertMgr.exe /add "%SUBJECTNAME%.cer" /s /r localMachine root
 echo.
 
 goto fin
